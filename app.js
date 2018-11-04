@@ -18,16 +18,17 @@ const _ = require('lodash');
 const note = require('./note.js');
 
 let argv = yargs.argv;
-let parameter = process.argv[2];
-console.log(argv);
+console.log(argv._);
 
-if(parameter == 'add'){
-    note.addNote(argv.title,argv.body);
-}else if(parameter == 'list'){
+if(argv._ == 'add'){
+    let handle = note.addNote(argv.title,argv.body);
+    if(handle == -1) console.log('A note with this title already exists.')
+    else console.log(`A note with a title \"${handle}\" has been created.`)
+}else if(argv._ == 'list'){
     note.listNote();
-}else if(parameter =='read'){
+}else if(argv._ =='read'){
     note.readNote(argv.title)
-}else if(parameter =='remove'){
+}else if(argv._ =='remove'){
     note.removeNote(argv.title)
 }else{
     console.log('Command not recognised')

@@ -1,7 +1,7 @@
 const fs = require('fs');
 let personObj = {
     name:'Phil',
-    age:17,
+    age:18,
     isMarried:false,
 };
 const personObjString = JSON.stringify(personObj);
