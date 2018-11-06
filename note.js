@@ -42,7 +42,13 @@ const addNote = (title, body) => {
 };
 
 const listNote = () => {
-    console.log(`That's the List`)
+    let notes =  gettingNotes();
+    console.log(`The are ${notes.length} note(s).`);
+    notes.forEach(note => {
+        console.log(`Title : ${note.title}`);
+        console.log(`Body : ${note.body}`);
+        console.log('-----');
+    });
 };
 
 const readNote = (title) => {
@@ -68,6 +74,7 @@ const removeNote = (title) => {
     if(index !=-1){
         notes.splice(index, 1);
         writeNotes(notes);
+        console.log("the note was removed")
     }else{
         console.log('There is no notes with that title');
     }
