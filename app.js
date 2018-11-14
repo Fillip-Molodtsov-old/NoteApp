@@ -38,18 +38,22 @@ let argv = yargs
     .command("remove", "Remove a selected note", {
         title: titleConfig
     })
+    .command("edit","Edit a selected note",{
+        title: titleConfig,
+        body: bodyConfig
+    })
     .argv;
 
 if(argv._ == 'add'){
-    let handle = note.addNote(argv.title,argv.body);
-    if(handle == -1) console.log('A note with this title already exists.')
-    else console.log(`A note with a title \"${handle}\" has been created.`)
+    note.addNote(argv.title,argv.body);
 }else if(argv._ == 'list'){
     note.listNote();
 }else if(argv._ =='read'){
     note.readNote(argv.title)
 }else if(argv._ =='remove'){
     note.removeNote(argv.title)
+}else if(argv._ == 'edit'){
+    note.editNote(argv.title,argv.body)
 }else{
     console.log('Command not recognised')
 }

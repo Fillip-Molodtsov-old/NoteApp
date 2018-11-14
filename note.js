@@ -35,11 +35,16 @@ const addNote = (title, body) => {
     if (!isDuplicated(notes, title)) {
         notes.push(noteObj);
         writeNotes(notes);
-        return title;
+        console.log(`A note with a title \"${title}\" has been created.`)
     } else {
-        return -1;
+        console.log('A note with this title already exists.')
     }
 };
+
+const editNote = (title,body) =>{
+    removeNote(title);
+    addNote(title,body);
+}
 
 const listNote = () => {
     let notes =  gettingNotes();
@@ -85,4 +90,5 @@ module.exports = {
     listNote,
     readNote,
     removeNote,
+    editNote
 };
